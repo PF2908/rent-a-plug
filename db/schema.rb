@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_123640) do
+ActiveRecord::Schema.define(version: 2022_06_06_123853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2022_06_06_123640) do
     t.index ["user_id"], name: "index_ads_on_user_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "ad_id", null: false
+    t.integer "rate"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ad_id"], name: "index_ratings_on_ad_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,4 +54,5 @@ ActiveRecord::Schema.define(version: 2022_06_06_123640) do
   end
 
   add_foreign_key "ads", "users"
+  add_foreign_key "ratings", "ads"
 end
