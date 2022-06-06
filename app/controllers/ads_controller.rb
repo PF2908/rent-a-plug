@@ -1,5 +1,7 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
 
   # GET /ads
   def index
@@ -14,6 +16,7 @@ class AdsController < ApplicationController
   # POST /ads
   def create
     @ad = Ad.new(ad_params)
+    @ad.user = current_user
 
     if @ad.save
       redirect_to @ad, notice: 'ad created.'
