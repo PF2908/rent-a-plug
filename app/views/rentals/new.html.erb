@@ -1,0 +1,6 @@
+<h3>Ajouter un nouvel emprunt</h3>
+  <%= simple_form_for @rental do |f| %>
+    <%= f.input :start_date, placeholder: 'Date d`emprunt' %>
+    <%= f.input :end_date, placeholder: 'Date de retour' %>
+    <%= f.submit class: 'btn btn-flat' %>
+  <% end %>
