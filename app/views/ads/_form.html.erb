@@ -1,0 +1,20 @@
+
+<%= simple_form_for(@ad) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :brand %>
+    <%= f.input :number_of_plug %>
+    <%= f.input :color %>
+    <%= f.input :cable_length %>
+    <%= f.input :location %>
+    <%= f.input :usb %>
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
