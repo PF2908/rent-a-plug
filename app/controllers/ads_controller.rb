@@ -6,6 +6,14 @@ class AdsController < ApplicationController
   # GET /ads
   def index
     @ads = Ad.all
+    @average = []
+    @ads.each do |ad|
+      @ratings = Rating.where(ad_id: ad.id)
+      @ratings.each do |rating|
+        @average << rating.rate
+      end
+    end
+
   end
 
   # GET /ads/new
@@ -27,6 +35,15 @@ class AdsController < ApplicationController
 
   # GET /ads/1
   def show
+    @rating = Rating.new
+    @rating.ad_id = params[:id]
+
+    @sum = []
+    @ratings = Rating.where(ad_id: @ad.id)
+    @ratings.each do |rating|
+      @sum << rating.rate
+    end
+    @average = @sum.sum / @sum.length
     @rental = Rental.new
   end
 

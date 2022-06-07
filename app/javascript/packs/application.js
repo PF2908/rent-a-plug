@@ -14,6 +14,7 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+import { dynamicRating } from "../plugins/starsInReviewForm";
 
 // ./packs/application.js
 import { Application } from 'stimulus'
@@ -32,3 +33,8 @@ document.addEventListener('turbolinks:load', () => {
 });
 // Import style for flatpickr
 require("flatpickr/dist/flatpickr.css")
+
+document.addEventListener('turbolinks:load', () => {
+    // [...]
+    dynamicRating();
+})
