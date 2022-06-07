@@ -7,9 +7,9 @@
 User.destroy_all
 Ad.destroy_all
 
-User.create(email: "phi@gmail.com", first_name: "phil", last_name: "bur", phone_number: "0000000000", password: "password")
+user = User.create(email: "phi@gmail.com", first_name: "phil", last_name: "bur", phone_number: "0000000000", password: "password")
 
 Ad.create(
   title: 'Annonce test', location: 'Marseille', color: 'Pink',
-  cable_length: 100, brand: 'Belkino', number_of_plug: 6, user_id: 1
+  cable_length: 100, brand: 'Belkino', number_of_plug: 6, user: user
 )

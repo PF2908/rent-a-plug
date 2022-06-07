@@ -16,6 +16,24 @@ import "controllers"
 import "bootstrap"
 import { dynamicRating } from "../plugins/starsInReviewForm";
 
+// ./packs/application.js
+import { Application } from 'stimulus'
+import { definitionsFromContext } from 'stimulus/webpack-helpers'
+
+const application = Application.start()
+const context = require.context('../controllers', true, /\.js$/)
+application.load(definitionsFromContext(context))
+
+// import Flatpickr
+import { initFlatpickr }  from '../plugins/flatpickr';
+initFlatpickr();
+
+document.addEventListener('turbolinks:load', () => {
+  initFlatpickr();
+});
+// Import style for flatpickr
+require("flatpickr/dist/flatpickr.css")
+
 document.addEventListener('turbolinks:load', () => {
     // [...]
     dynamicRating();

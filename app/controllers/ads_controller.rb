@@ -1,5 +1,7 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+
 
   # GET /ads
   def index
@@ -22,6 +24,7 @@ class AdsController < ApplicationController
   # POST /ads
   def create
     @ad = Ad.new(ad_params)
+    @ad.user = current_user
 
     if @ad.save
       redirect_to @ad, notice: 'ad created.'
@@ -41,6 +44,7 @@ class AdsController < ApplicationController
       @sum << rating.rate
     end
     @average = @sum.sum / @sum.length
+    @rental = Rental.new
   end
 
   # GET /ads/:id/edit
@@ -68,7 +72,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug)
+    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug, :usb, :description)
   end
 end
 
