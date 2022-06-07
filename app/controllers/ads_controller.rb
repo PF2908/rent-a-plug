@@ -1,6 +1,6 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
 
 
   # GET /ads
@@ -54,7 +54,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug)
+    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug, :usb, :description)
   end
 end
 
