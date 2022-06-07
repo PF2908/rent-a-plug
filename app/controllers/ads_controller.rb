@@ -27,6 +27,7 @@ class AdsController < ApplicationController
 
   # GET /ads/1
   def show
+    @rental = Rental.new
   end
 
   # GET /ads/:id/edit
