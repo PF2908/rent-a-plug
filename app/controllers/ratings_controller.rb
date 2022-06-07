@@ -5,7 +5,7 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
     @user = current_user
     @ad = Ad.find(params[:ad_id])
-    @rating.user = @user
+    @rating.user_id = @user.id
     @rating.ad = @ad
     if @rating.save
       redirect_to ad_path(@ad)
@@ -24,6 +24,6 @@ class RatingsController < ApplicationController
   private
 
   def rating_params
-    params.require(:rating).permit(:user_id, :ad_id, :comment)
+    params.require(:rating).permit(:user_id, :ad_id, :comment, :rate)
   end
 end

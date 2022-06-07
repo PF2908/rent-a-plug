@@ -1,9 +1,0 @@
-<div class="container">
-    <h2> Bonjour je m'appelle <%=@user.firts_name @user.last_name%>
-    <p> Mon mail : <%= user.email %></p>
-    <%= link_to 'Modifier', edit_user_path(@user) %>
-    <%= link_to "Supprimer", ads_path(@ads),
-                method: :delete, 
-                data: { confirm: "Voulez vous vraiment supprimer votre compte" }
-                %>
-</div>

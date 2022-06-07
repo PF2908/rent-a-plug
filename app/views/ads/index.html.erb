@@ -1,40 +1,64 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ads</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Nb of plug</th>
-      <th>Color</th>
-      <th>Cable length</th>
-      <th>Location</th>
-      <th>Usb</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(https://images.unsplash.com/photo-1514771206769-bd41b0138cc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGVsZWN0cmljaXR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60);">
+  <div class="container">
+    <h1>Plug Ads</h1>
+    <p>Rent your plug !</p>
+    <a class="btn btn-flat"<%= link_to 'New Ad', new_ad_path, class:"text-decoration-none" %></a>
+  </div>
+</div>
 
-  <tbody>
-    <% @ads.each do |ad| %>
-      <tr>
-        <td><%= ad.title %></td>
-        <td><%= ad.number_of_plug %></td>
-        <td><%= ad.color %></td>
-        <td><%= ad.cable_length %></td>
-        <td><%= ad.location %></td>
-        <td><%= ad.usb %></td>
-        <td><%= ad.description %></td>
-
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Ad', new_ad_path %>
+<div class="container mt-4">
+  <div class="grid">
+      <% @ads.each do |ad| %>
+      <div class="card">
+      <div class="item">
+         <a> <%= link_to ad, class:"text-decoration-none" do %> </a>
+            <img src='https://www.keria.com/media/catalog/product/cache/a46bb62c77b4b6fde7d40b04bb4cd366/1/9-43165-1904366/multiprise-multimedia-usb-2x16a-1x6a-jaune-wattaco-1904366.jpg' alt=''>
+            <div class="item__overlay">
+              <div class="title-container">
+                <h3 id="title" aria-hidden="true"><%= ad.title %></h3>
+                <div class="stars">
+                  <%= render "shared/rate", average: @average %>
+                </div>
+              </div>
+              <div class="item__body">
+                  <div class="user_info">
+                  <div><img class="card_user_pic" src="https://i.imgur.com/7D7I6dI.png" alt="" /></div>
+                  <div><span class="card__user">Jessica Parker</span></div>
+                  </div>
+                <ul>
+                  <li>Description : <%= ad.description %></li>
+                  <li>Number of plug : <%= ad.number_of_plug %></li>
+                  <li>Color : <%= ad.color %></li>
+                  <li>Cable length (cm) : <%= ad.cable_length %></li>
+                  <li>Location : <%= ad.location %></li>
+                  <li>Usb : <%= ad.usb ? "Oui" : "Non" %></li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+      </div>
+              <div class= bouton>
+                    <div>
+                    <a <%= link_to 'Edit', edit_ad_path(ad), class:"text-decoration-none"%>
+                      <span class="line -right"></span>
+                      <span class="line -top"></span>
+                      <span class="line -left"></span>
+                      <span class="line -bottom"></span>
+                    </a>
+                    </div>
+                    <div>
+                    <a <%= link_to 'Destroy', ad, class:"text-decoration-none", method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <span class="line -right"></span>
+                      <span class="line -top"></span>
+                      <span class="line -left"></span>
+                      <span class="line -bottom"></span>
+                    </a>
+                    </div>
+              </div>
+      </div>
+      <% end %>
+  </div>
+</div>

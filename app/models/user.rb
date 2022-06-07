@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :phone_numer, with: /\d[0-9]\)*\z/
+  # validates :phone_number, with: (/\d[0-9]\)*\z/)
 end
