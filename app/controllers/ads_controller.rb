@@ -13,7 +13,11 @@ class AdsController < ApplicationController
         @sum << rating.rate
       end
     end
-    @average = @sum.sum / @sum.length
+    if @sum.length != 0
+      @average = @sum.sum / @sum.length
+    else
+      @average = 0
+    end
   end
 
   # GET /ads/new
@@ -43,7 +47,11 @@ class AdsController < ApplicationController
     @ratings.each do |rating|
       @sum << rating.rate
     end
-    @average = @sum.sum / @sum.length
+    if @sum.length != 0
+      @average = @sum.sum / @sum.length
+    else
+      @average = 0
+    end
     @rental = Rental.new
   end
 
