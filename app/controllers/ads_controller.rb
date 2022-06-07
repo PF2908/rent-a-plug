@@ -6,14 +6,14 @@ class AdsController < ApplicationController
   # GET /ads
   def index
     @ads = Ad.all
-    @average = []
+    @sum = []
     @ads.each do |ad|
       @ratings = Rating.where(ad_id: ad.id)
       @ratings.each do |rating|
-        @average << rating.rate
+        @sum << rating.rate
       end
     end
-
+    @average = @sum.sum / @sum.length
   end
 
   # GET /ads/new

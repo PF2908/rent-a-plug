@@ -17,7 +17,12 @@
          <a> <%= link_to ad, class:"text-decoration-none" do %> </a>
             <img src='https://www.keria.com/media/catalog/product/cache/a46bb62c77b4b6fde7d40b04bb4cd366/1/9-43165-1904366/multiprise-multimedia-usb-2x16a-1x6a-jaune-wattaco-1904366.jpg' alt=''>
             <div class="item__overlay">
-              <h3 id="title" aria-hidden="true"><%= ad.title %></h3>
+              <div class="title-container">
+                <h3 id="title" aria-hidden="true"><%= ad.title %></h3>
+                <div class="stars">
+                  <%= render "shared/rate", average: @average %>
+                </div>
+              </div>
               <div class="item__body">
                   <div class="user_info">
                   <div><img class="card_user_pic" src="https://i.imgur.com/7D7I6dI.png" alt="" /></div>
