@@ -1,40 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="container pt-3 my-3 border">
+  <div class= "text-center">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title</strong>
-  <%= @ad.title %>
-</p>
+    <p>
+      <strong>Title</strong>
+      <%= @ad.title %>
+    </p>
 
-<p>
-  <strong>Description :</strong>
-  <%= @ad.description %>
-</p>
+    <p>
+      <strong>Note</strong>
+      <%= render "shared/rate", average: @average %>
 
-<p>
-  <strong>Color:</strong>
-  <%= @ad.color %>
-</p>
+    </p>
 
-<p>
-  <strong>Cable Lenght:</strong>
-  <%= @ad.cable_length %>
-</p>
+    <p>
+      <strong>Description :</strong>
+      <%= @ad.description %>
+    </p>
 
-<p>
-  <strong>Brand</strong>
-  <%= @ad.brand %>
-</p>
+    <p>
+      <strong>Color:</strong>
+      <%= @ad.color %>
+    </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @ad.location %>
-</p>
+    <p>
+      <strong>Cable Length:</strong>
+      <%= @ad.cable_length %>
+    </p>
 
-<p>
-  <strong>Usb:</strong>
-  <%= @ad.usb %>
-</p>
+    <p>
+      <strong>Brand</strong>
+      <%= @ad.brand %>
+    </p>
 
+    <p>
+      <strong>Location:</strong>
+      <%= @ad.location %>
+    </p>
 
-<%= link_to 'Edit', edit_ad_path(@ad) %> |
-<%= link_to 'Back', ads_path %>
+    <p>
+      <strong>Usb:</strong>
+      <%= @ad.usb %>
+    </p>
+  </div>
+
+  <div>
+  <%= simple_form_for [@ad, @rental] do |f| %>
+        <%= f.input :start_date, label:'Début de la location', as: :string, required: false, input_html: {id: "range_start"} %>
+        <%= f.input :end_date, label: 'Fin de la location', as: :string, required: false, input_html: {id: "range_end"} %>
+        <%= f.button :submit, "Go", class: "btn btn-primary" %>
+      <% end %>
+  </div>
+  <br>
+  <%= link_to 'Edit', edit_ad_path(@ad) %> |
+  <%= link_to 'Back', ads_path %>
+</div>
