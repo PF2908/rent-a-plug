@@ -4,14 +4,22 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
+    <div class="mb-3 string required ad_brand">
+      <label class="form-label string required" for="ad_title">Title <abbr title="required">*</abbr></label>
+      <%= f.input_field :title, class: 'form-control string required' %>
+    </div>
+
     <%= f.input :brand %>
     <%= f.input :number_of_plug %>
     <%= f.input :color %>
     <%= f.input :cable_length %>
-    <%= f.input :location %>
+    <div class="mb-3 string required ad_brand">
+      <label class="form-label string required" for="ad_location">Location <abbr title="required">*</abbr></label>
+      <%= f.input_field :location, class: 'form-control string required' %>
+    </div>
     <%= f.input :usb %>
     <%= f.input :description %>
+    <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
