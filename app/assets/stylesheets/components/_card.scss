@@ -266,3 +266,11 @@ $extra : calc(#{$pad} * 1.2);
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+#pic {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
