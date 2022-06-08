@@ -23,13 +23,14 @@ class AdsController < ApplicationController
   # GET /ads/new
   def new
     @ad = Ad.new
+    @ad.user_id = current_user.id
   end
 
   # POST /ads
   def create
     @ad = Ad.new(ad_params)
-    @ad.user = current_user
-    @ad.title = "toto"
+    @user = current_user
+    @ad.user_id = @user.id
     if @ad.save
       redirect_to @ad, notice: 'ad created.'
     else
