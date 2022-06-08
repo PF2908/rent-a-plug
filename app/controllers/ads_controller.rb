@@ -1,6 +1,6 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy, :create]
 
 
   # GET /ads
@@ -23,13 +23,14 @@ class AdsController < ApplicationController
   # GET /ads/new
   def new
     @ad = Ad.new
+    @ad.user_id = current_user.id
   end
 
   # POST /ads
   def create
     @ad = Ad.new(ad_params)
-    @ad.user = current_user
-
+    @user = current_user
+    @ad.user_id = @user.id
     if @ad.save
       redirect_to @ad, notice: 'ad created.'
     else
@@ -80,7 +81,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug, :usb, :description)
+    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug, :usb, :description, :photo)
   end
 end
 
