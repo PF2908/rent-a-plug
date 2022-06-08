@@ -23,6 +23,7 @@
         </div>
     </div>
   </div>
+  <% if current_user != @ad.user%>
   <br>
   <div class="calendar" >
     <div class="form-wrapper" style="width: 1000px; margin: 0 auto;">
@@ -32,6 +33,7 @@
             <%= f.input :end_date, label: 'Fin de la location', as: :string, required: false, input_html: {id: "range_end"} %>
             <%= f.button :submit, "Go", class: "btn btn-primary" %>
           <% end %>
+  <% end %>
     <br>
     <% if current_user == @ad.user %>
     <%= link_to 'Edit', edit_ad_path(@ad), class: "btn btn-primary"%>
