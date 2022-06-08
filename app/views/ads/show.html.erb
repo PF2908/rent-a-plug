@@ -13,11 +13,12 @@
           <strong> <%= @ad.user.first_name  %> </strong></div>
         </div>
         <div>
+          <p>Prix : <%= @ad.price%></p>
           <p>Description : <%= @ad.description %></p>
-          <p>Number of plug : <%= @ad.number_of_plug %></p>
-          <p>Color : <%= @ad.color %></p>
-          <p>Cable length (cm) : <%= @ad.cable_length %></p>
-          <p>Location : <%= @ad.location %></p>
+          <p>Nombre de prises: <%= @ad.number_of_plug %></p>
+          <p>Couleur : <%= @ad.color %></p>
+          <p>Longueur de cable (cm) : <%= @ad.cable_length %></p>
+          <p>Lieu : <%= @ad.location %></p>
           <p>Usb : <%= @ad.usb ? "Oui" : "Non" %></p>
         </div>
     </div>
