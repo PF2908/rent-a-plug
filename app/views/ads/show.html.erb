@@ -1,40 +1,43 @@
-<div class="container pt-3 my-3 border">
-  <div class="card">
-    <div class="item">
-      <img src='https://www.keria.com/media/catalog/product/cache/a46bb62c77b4b6fde7d40b04bb4cd366/1/9-43165-1904366/multiprise-multimedia-usb-2x16a-1x6a-jaune-wattaco-1904366.jpg' alt=''>
-      <div class="item__overlay">
-        <div class="title-container">
-          <h3 id="title" aria-hidden="true"><%= ad.title %></h3>
-          <div class="stars">
-            <%= render "shared/rate", average: @average %>
-          </div>
-        </div>
-        <div class="item__body">
-            <div class="user_info">
-            <div><img class="card_user_pic" src="https://i.imgur.com/7D7I6dI.png" alt="" /></div>
-            <div><span class="card__user">Jessica Parker</span></div>
-            </div>
-          <ul>
-            <li>Description : <%= ad.description %></li>
-            <li>Number of plug : <%= ad.number_of_plug %></li>
-            <li>Color : <%= ad.color %></li>
-            <li>Cable length (cm) : <%= ad.cable_length %></li>
-            <li>Location : <%= ad.location %></li>
-            <li>Usb : <%= ad.usb ? "Oui" : "Non" %></li>
-          </ul>
-        </div>
+<div class="container">
+  <div class="card-product">
+    <img src="https://www.keria.com/media/catalog/product/cache/a46bb62c77b4b6fde7d40b04bb4cd366/1/9-43165-1904366/multiprise-multimedia-usb-2x16a-1x6a-jaune-wattaco-1904366.jpg" />
+    <div class="card-product-infos"  style="width: 1000px; margin: 0 auto;">
+      <h3><%= @ad.title %></h3>
+      <div class="stars">
+        <%= render "shared/rate", average: @average %>
       </div>
+      <p></p>
+      <div class="user_info">
+          <img id="pic"src="https://i.imgur.com/7D7I6dI.png" alt="" />
+          <div><span class="card__user">Annonce postée par</span>
+          <strong> <%= @ad.user.first_name  %> </strong></div>
+        </div>
+        <div>
+          <p>Description : <%= @ad.description %></p>
+          <p>Number of plug : <%= @ad.number_of_plug %></p>
+          <p>Color : <%= @ad.color %></p>
+          <p>Cable length (cm) : <%= @ad.cable_length %></p>
+          <p>Location : <%= @ad.location %></p>
+          <p>Usb : <%= @ad.usb ? "Oui" : "Non" %></p>
+        </div>
     </div>
   </div>
-
-  <div>
-    <%= simple_form_for [@ad, @rental] do |f| %>
-          <%= f.input :start_date, label:'Début de la location', as: :string, required: false, input_html: {id: "range_start"} %>
-          <%= f.input :end_date, label: 'Fin de la location', as: :string, required: false, input_html: {id: "range_end"} %>
-          <%= f.button :submit, "Go", class: "btn btn-primary" %>
-        <% end %>
+  <br>
+  <div class="calendar" >
+    <div class="form-wrapper" style="width: 1000px; margin: 0 auto;">
+      <h3> Effectuer une réservation </h3>
+      <%= simple_form_for [@ad, @rental] do |f| %>
+            <%= f.input :start_date, label:'Début de la location', as: :string, required: false, input_html: {id: "range_start"} %>
+            <%= f.input :end_date, label: 'Fin de la location', as: :string, required: false, input_html: {id: "range_end"} %>
+            <%= f.button :submit, "Go", class: "btn btn-primary" %>
+          <% end %>
     <br>
-    <%= link_to 'Edit', edit_ad_path(@ad), class: "btn btn-primary"%> |
-    <%= link_to 'Back', ads_path, class: "btn btn-primary" %>
+    <% if current_user == @ad.user %>
+    <%= link_to 'Edit', edit_ad_path(@ad), class: "btn btn-primary"%>
+    <% end %>
+
   </div>
+
+  </div>
+
 </div>
