@@ -11,7 +11,7 @@
         <% if @ad.user.photo.attached? %>
           <%= cl_image_tag @ad.user.photo.key, height: 300, width: 400, crop: :fill, id: "pic" %>
         <% else %>
-          <%= image_tag "https://eu.ui-avatars.com/api/?name=#{@ad.user.first_name}+#{@ad.user.last_name}", height: 300, width: 400, crop: :fill, class: "card_user_pic" %>
+          <%= image_tag "https://eu.ui-avatars.com/api/?name=#{@ad.user.first_name}+#{@ad.user.last_name}", height: 300, width: 400, crop: :fill, id: "pic" %>
         <% end %>
           <div><span class="card__user">Annonce postée par</span>
           <strong> <%= @ad.user.first_name  %> </strong></div>
