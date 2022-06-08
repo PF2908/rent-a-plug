@@ -54,6 +54,11 @@ class AdsController < ApplicationController
       @average = 0
     end
     @rental = Rental.new
+
+    @marker = {
+      lat: @ad.latitude,
+      lng: @ad.longitude
+    }
   end
 
   # GET /ads/:id/edit

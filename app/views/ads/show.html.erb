@@ -54,4 +54,11 @@
   <br>
   <%= link_to 'Edit', edit_ad_path(@ad) %> |
   <%= link_to 'Back', ads_path %>
+
+  <%= @marker %>
+  <div style="width: 100%; height: 600px;"
+  data-controller="mapbox"
+  data-mapbox-marker-value="<%= @marker.to_json %>"
+  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 </div>
