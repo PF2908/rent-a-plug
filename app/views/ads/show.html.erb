@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-product">
-    <img src="https://www.keria.com/media/catalog/product/cache/a46bb62c77b4b6fde7d40b04bb4cd366/1/9-43165-1904366/multiprise-multimedia-usb-2x16a-1x6a-jaune-wattaco-1904366.jpg" />
+    <%= cl_image_tag @ad.photo.key, height: 300, width: 400, crop: :fill %>
     <div class="card-product-infos"  style="width: 1000px; margin: 0 auto;">
       <h3><%= @ad.title %></h3>
       <div class="stars">
