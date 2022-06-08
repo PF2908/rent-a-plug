@@ -5,7 +5,7 @@
   <div class="container">
     <h1>Plug Ads</h1>
     <p>Rent your plug !</p>
-    <a class="btn btn-flat"<%= link_to 'New Plug Ad', new_ad_path, class:"text-decoration-none" %></a>
+    <a class="btn btn-flat"<%= link_to 'Nouvelle annonce', new_ad_path, class:"text-decoration-none" %></a>
   </div>
 </div>
 
@@ -31,19 +31,20 @@
                   </div>
                 <ul>
                   <li>Description : <%= ad.description %></li>
-                  <li>Number of plug : <%= ad.number_of_plug %></li>
-                  <li>Color : <%= ad.color %></li>
-                  <li>Cable length (cm) : <%= ad.cable_length %></li>
-                  <li>Location : <%= ad.location %></li>
+                  <li>Numbre de prises: <%= ad.number_of_plug %></li>
+                  <li>Couleur : <%= ad.color %></li>
+                  <li>Longueur de cable (cm) : <%= ad.cable_length %></li>
+                  <li>Localisation : <%= ad.location %></li>
                   <li>Usb : <%= ad.usb ? "Oui" : "Non" %></li>
                 </ul>
               </div>
             </div>
           <% end %>
       </div>
+      <% if current_user == ad.user%>
               <div class= bouton>
                     <div>
-                    <a <%= link_to 'Edit', edit_ad_path(ad), class:"text-decoration-none"%>
+                    <a <%= link_to 'Modifier', edit_ad_path(ad), class:"text-decoration-none"%>
                       <span class="line -right"></span>
                       <span class="line -top"></span>
                       <span class="line -left"></span>
@@ -51,7 +52,7 @@
                     </a>
                     </div>
                     <div>
-                    <a <%= link_to 'Destroy', ad, class:"text-decoration-none", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <a <%= link_to 'Supprimer', ad, class:"text-decoration-none", method: :delete, data: { confirm: 'Are you sure?' } %>
                       <span class="line -right"></span>
                       <span class="line -top"></span>
                       <span class="line -left"></span>
@@ -59,6 +60,7 @@
                     </a>
                     </div>
               </div>
+              <% end%>
       </div>
       <% end %>
   </div>
