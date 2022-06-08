@@ -1,4 +1,5 @@
 class Ad < ApplicationRecord
+  has_one_attached :photo
   belongs_to :user
   has_many :ratings
   has_many :rentals
