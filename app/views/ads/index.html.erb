@@ -26,7 +26,11 @@
               </div>
               <div class="item__body">
                   <div class="user_info">
-                  <div><img class="card_user_pic" src="https://i.imgur.com/7D7I6dI.png" alt="" /></div>
+                    <% if ad.user.photo.attached? %>
+                      <%= cl_image_tag ad.user.photo.key, height: 300, width: 400, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% else %>
+                      <%= image_tag "https://eu.ui-avatars.com/api/?name=#{ad.user.first_name}+#{ad.user.last_name}", height: 300, width: 400, crop: :fill, class: "card_user_pic" %>
+                    <% end %>
                   <div><span class="card__user"><%= ad.user.first_name %></span></div>
                   </div>
                 <ul>

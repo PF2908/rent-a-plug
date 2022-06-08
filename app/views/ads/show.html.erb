@@ -8,7 +8,11 @@
       </div>
       <p></p>
       <div class="user_info">
-          <img id="pic"src="https://i.imgur.com/7D7I6dI.png" alt="" />
+        <% if @ad.user.photo.attached? %>
+          <%= cl_image_tag @ad.user.photo.key, height: 300, width: 400, crop: :fill, id: "pic" %>
+        <% else %>
+          <%= image_tag "https://eu.ui-avatars.com/api/?name=#{@ad.user.first_name}+#{@ad.user.last_name}", height: 300, width: 400, crop: :fill, class: "card_user_pic" %>
+        <% end %>
           <div><span class="card__user">Annonce postée par</span>
           <strong> <%= @ad.user.first_name  %> </strong></div>
         </div>
