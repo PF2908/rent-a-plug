@@ -1,10 +1,13 @@
 <div class="container d-flex justify-content-center">
-    <div class="edit-form">
-        <h1>Editing ad</h1>
-          <%= render 'form', ad: @ad %>
-            <div class="btn btn-primary" <%= link_to 'Back', ads_path,class: "text-decoration-none" %>
-            </div>
+  <div class="edit-form">
+      <h1>Editing ad</h1>
+      <%= render 'form', ad: @ad %>
+
+    <div class="btn btn-primary">
+      <%= link_to 'Back', ads_path, class: "text-decoration-none" %>
     </div>
-    <div class="img-plug">
-    </div>
+  </div>
+
+  <div class="img-plug">
+  </div>
 </div>

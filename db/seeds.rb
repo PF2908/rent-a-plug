@@ -4,6 +4,7 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+Rental.destroy_all
 Rating.destroy_all
 Ad.destroy_all
 User.destroy_all
@@ -16,4 +17,3 @@ ad = Ad.create(
 )
 
 Rating.create(user_id: user.id, ad_id: ad.id, rate: 3, comment: "Parfait")
-
