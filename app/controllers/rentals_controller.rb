@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-
+  #before_action :authenticate_user!
   def new
     @rental = Rental.new
   end
@@ -10,10 +10,15 @@ class RentalsController < ApplicationController
     @rental.ad = @ad
     @rental.user = current_user
     if @rental.save
-      redirect_to ad_path(@ad)
+      redirect_to ad_rental_path(@ad, @rental)
     else
       render :new
     end
+  end
+
+  def show
+    @ad = Ad.find(params[:ad_id])
+    @rental = Rental.find(params[:id])
   end
 
   private

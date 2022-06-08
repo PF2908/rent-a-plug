@@ -54,6 +54,11 @@ class AdsController < ApplicationController
       @average = 0
     end
     @rental = Rental.new
+
+    @marker = {
+      lat: @ad.latitude,
+      lng: @ad.longitude
+    }
   end
 
   # GET /ads/:id/edit
@@ -81,7 +86,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug, :usb, :description, :photo)
+    params.require(:ad).permit(:title, :location, :color, :cable_length, :brand, :number_of_plug, :usb, :description, :price, :photo)
   end
 end
 
