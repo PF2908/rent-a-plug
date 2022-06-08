@@ -1,0 +1,20 @@
+.container-form {
+  width: 70%;
+
+}
+
+.form-actions {
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $green-custom;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  width: 20%;
+  margin-top: 10px;
+}
+.form-actions:hover {
+  background: #1baecb;
+  color: white;
+}
