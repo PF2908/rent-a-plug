@@ -18,13 +18,15 @@
       <%= f.input_field :location, class: 'form-control string required' %>
     </div>
     <%= f.input :usb %>
-    <%= f.input :description %>
-    <%= f.input :price %>
+    <div class="mb-3 string required ad_brand">
+      <label class="form-label string required" for="ad_description">Description <abbr title="required">*</abbr></label>
+      <%= f.input_field :description, class: 'form-control string required' %>
+    </div>    <%= f.input :price %>
     <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
 </div>

@@ -20,7 +20,7 @@ user = User.create(email: "phi@gmail.com", first_name: "phil", last_name: "bur",
 file = URI.open('https://cdn.shopify.com/s/files/1/0073/9046/2036/products/sq1-thumbnail.blue-a512_1440x.png')
 ad = Ad.new(
   title: 'Annonce test', location: 'Marseille', color: 'Pink',
-  cable_length: 100, brand: 'Belkino', number_of_plug: 6, user: user, description: "dskjvndfjkh  zifghfe ije kjgh dkjdkkj jkj erghjdf jk hvdfkjfgb kjgdbkjnb kjh kh ekdghbv kjdhfg kh ", price: 12.50
+  cable_length: 100, brand: 'Belkino', number_of_plug: 6, user: user, description: "Ceci est une description", price: 25.94
 )
 ad.photo.attach(io: file, filename: 'multi.png', content_type: 'image/png')
 p ad.photo.attached?
