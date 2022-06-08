@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card-product">
+    <%= cl_image_tag @ad.photo.key, height: 300, width: 400, crop: :fill %>
+    <div class="card-product-infos">
+      <h4>Merci <%= current_user.first_name %></h4>
+      <h2> Veuillez trouver ci-dessous les détails de votre réservation</h2>
+      <br>
+      <br>
+        <h3><%=@ad.title %> - du <%= @rental.start_date %> au <%= @rental.end_date %></h3>
+      <br>
+      <div class="rental-details">
+        <div class="rental-left">
+          <div>
+            <p> <h2><strong>Personne à contacter: </strong></h2><%= @ad.user.first_name %> <%= @ad.user.last_name %></p>
+            <p>Téléphone: <%= @ad.user.phone_number %></p>
+          </div>
+        </div>
+        <div class="rental-right">
+          <div>
+            <h2>Description</h2>
+            <p><%= @ad.description %></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
