@@ -5,9 +5,11 @@ class AdsController < ApplicationController
 
   # GET /ads
   def index
+    if user_signed_in?
+      @my_ads = Ad.where(user_id: current_user.id)
+      @other_ads = Ad.where.not(user_id: current_user.id)
+    end
     @ads = Ad.all
-    @my_ads = Ad.where(user_id: current_user.id)
-    @other_ads = Ad.where.not(user_id: current_user.id)
     @sum = []
     @ads.each do |ad|
       @ratings = Rating.where(ad_id: ad.id)
@@ -22,6 +24,9 @@ class AdsController < ApplicationController
     end
 
     if params[:query].present?
+      if user_signed_in?
+        @other_ads = Ad.global_search(params[:query])
+      end
       @ads = Ad.global_search(params[:query])
     else
       @ads = Ad.all
