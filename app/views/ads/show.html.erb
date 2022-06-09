@@ -32,12 +32,15 @@
   <br>
   <div class="calendar" >
     <div class="form-wrapper" style="width: 1000px; margin: 0 auto;">
-      <h3> Effectuer une réservation </h3>
-      <%= simple_form_for [@ad, @rental] do |f| %>
-            <%= f.input :start_date, label:'Début de la location', as: :string, required: false, input_html: {id: "range_start"} %>
-            <%= f.input :end_date, label: 'Fin de la location', as: :string, required: false, input_html: {id: "range_end"} %>
-            <%= f.button :submit, "Go", class: "btn btn-primary" %>
-          <% end %>
+      <% if user_signed_in? %>
+        <h3> Effectuer une réservation </h3>
+        <%= simple_form_for [@ad, @rental] do |f| %>
+          <%= f.input :start_date, label:'Début de la location', as: :string, required: false, input_html: {id: "range_start"} %>
+          <%= f.input :end_date, label: 'Fin de la location', as: :string, required: false, input_html: {id: "range_end"} %>
+          <%= f.button :submit, "Go", class: "btn btn-primary" %>
+        <% end %>
+        <% end %>
+
   <% end %>
     <br>
     <% if current_user == @ad.user %>
