@@ -38,3 +38,10 @@ document.addEventListener('turbolinks:load', () => {
     // [...]
     dynamicRating();
 })
+
+const audio = new Audio('https://www.soundjay.com/buttons/sounds/button-4.mp3')
+const item = document.querySelector('item')
+
+item.addEventListener('click', (e) => {
+  audio.play()
+})
