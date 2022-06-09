@@ -20,6 +20,12 @@ class AdsController < ApplicationController
     else
       @average = 0
     end
+
+    if params[:query].present?
+      @ads = Ad.global_search(params[:query])
+    else
+      @ads = Ad.all
+    end
   end
 
   # GET /ads/new
