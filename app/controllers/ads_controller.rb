@@ -57,7 +57,8 @@ class AdsController < ApplicationController
 
     @marker = {
       lat: @ad.latitude,
-      lng: @ad.longitude
+      lng: @ad.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { ad: @ad })
     }
   end
 
