@@ -7,3 +7,15 @@
 @import "banner";
 @import "image";
 @import "calendar";
+
+body {
+  background-color: white;
+}
+
+.text-ads{
+  background: linear-gradient(90deg, rgba(19,66,133,1) 0%, rgba(53,168,87,1) 100%);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 20px;
+}

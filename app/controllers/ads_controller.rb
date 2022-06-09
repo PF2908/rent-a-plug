@@ -6,6 +6,8 @@ class AdsController < ApplicationController
   # GET /ads
   def index
     @ads = Ad.all
+    @my_ads = Ad.where(user_id: current_user.id)
+    @other_ads = Ad.where.not(user_id: current_user.id)
     @sum = []
     @ads.each do |ad|
       @ratings = Rating.where(ad_id: ad.id)
