@@ -23,6 +23,9 @@ class AdsController < ApplicationController
       sql_query = " \
         ads.title @@ :query \
         OR ads.description @@ :query \
+        OR ads.location @@ :query \
+        OR ads.color @@ :query \
+        OR ads.brand @@ :query \
       "
       @ads = Ad.where(sql_query, query: "%#{params[:query]}%")
     else
