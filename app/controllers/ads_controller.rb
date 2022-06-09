@@ -5,6 +5,10 @@ class AdsController < ApplicationController
 
   # GET /ads
   def index
+    if user_signed_in?
+      @my_ads = Ad.where(user_id: current_user.id)
+      @other_ads = Ad.where.not(user_id: current_user.id)
+    end
     @ads = Ad.all
     @sum = []
     @ads.each do |ad|
@@ -17,6 +21,15 @@ class AdsController < ApplicationController
       @average = @sum.sum / @sum.length
     else
       @average = 0
+    end
+
+    if params[:query].present?
+      if user_signed_in?
+        @other_ads = Ad.global_search(params[:query])
+      end
+      @ads = Ad.global_search(params[:query])
+    else
+      @ads = Ad.all
     end
   end
 
@@ -45,7 +58,12 @@ class AdsController < ApplicationController
 
     @sum = []
     @ratings = Rating.where(ad_id: @ad.id)
+    @rentals = Rental.where(ad_id: @ad.id, user_id: current_user.id)
+    if @rentals != nil
+      @ad_rental = @rentals.last
+    end
     @ratings.each do |rating|
+      @user_rating = User.find(rating.user_id)
       @sum << rating.rate
     end
     if @sum.length != 0
@@ -57,7 +75,8 @@ class AdsController < ApplicationController
 
     @marker = {
       lat: @ad.latitude,
-      lng: @ad.longitude
+      lng: @ad.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { ad: @ad })
     }
   end
 

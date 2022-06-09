@@ -5,8 +5,17 @@
     <% end %>
 
     <div class="input-group rounded-pill">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
+      <%# <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /> %>
+      <%# <button type="button" class="btn btn-outline-primary">Rechercher</button> %>
+
+      <%= form_tag ads_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Trouver une prise"
+        %>
+        <%= submit_tag "Rechercher", class: "btn btn-outline-primary" %>
+      <% end %>
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
