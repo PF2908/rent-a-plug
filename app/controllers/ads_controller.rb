@@ -18,6 +18,16 @@ class AdsController < ApplicationController
     else
       @average = 0
     end
+
+    if params[:query].present?
+      sql_query = " \
+        ads.title @@ :query \
+        OR ads.description @@ :query \
+      "
+      @ads = Ad.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @ads = Ad.all
+    end
   end
 
   # GET /ads/new
