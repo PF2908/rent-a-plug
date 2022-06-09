@@ -14,6 +14,7 @@
 
 
 <div class="container mt-4">
+<% if user_signed_in?%>
 <h3 class="text-ads">Mes annonces de multiplug : </h3>
   <div class ="grid">
    <% @my_ads.each do |ad| %>
@@ -26,4 +27,12 @@
       <%= render "card", ad: ad %>
       <% end %>
   </div>
+  <% else %>
+  <h3 class="text-ads">Toutes les annonces ! </h3>
+  <div class ="grid">
+  <% @ads.each do |ad| %>
+      <%= render "card", ad: ad %>
+      <% end %>
+  </div>
+  <% end %>
 </div>
