@@ -13,9 +13,15 @@
     <%= f.input :number_of_plug %>
     <%= f.input :color %>
     <%= f.input :cable_length %>
-    <div class="mb-3 string required ad_brand">
-      <label class="form-label string required" for="ad_location">Location <abbr title="required">*</abbr></label>
-      <%= f.input_field :location, class: 'form-control string required' %>
+
+
+    <div class="mb-3 string required ad_brand" data-controller="geocoder" data-geocoder_api_key_value="pk.eyJ1IjoicGF1bGZvdXJuaWVyIiwiYSI6ImNsM216ZnpwNjAzc28za2xnM2tlZDI4YXQifQ.F4Xl8mMx-ZD0Ikn-5yHbOg" data-geocoder-target="location">
+    <label class="form-label string required" for="ad_brand">Location <abbr title="required">*</abbr></label>
+
+    <%= f.input_field :location, class: 'form-control string required',
+                        "data-geocoder-target": "location",
+                        "data-geocoder_api_key_value": "pk.eyJ1IjoicGF1bGZvdXJuaWVyIiwiYSI6ImNsM216ZnpwNjAzc28za2xnM2tlZDI4YXQifQ.F4Xl8mMx-ZD0Ikn-5yHbOg"
+                         %>
     </div>
     <%= f.input :usb %>
     <div class="mb-3 string required ad_brand">
