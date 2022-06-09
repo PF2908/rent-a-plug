@@ -45,7 +45,12 @@ class AdsController < ApplicationController
 
     @sum = []
     @ratings = Rating.where(ad_id: @ad.id)
+    @rentals = Rental.where(ad_id: @ad.id, user_id: current_user.id)
+    if @rentals != nil
+      @ad_rental = @rentals.last
+    end
     @ratings.each do |rating|
+      @user_rating = User.find(rating.user_id)
       @sum << rating.rate
     end
     if @sum.length != 0
