@@ -1,0 +1,11 @@
+.reviews-star {
+  display: flex;
+  background-color: red;
+}
+
+.review-star-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+}

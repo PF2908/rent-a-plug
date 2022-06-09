@@ -9,63 +9,21 @@
   </div>
 </div>
 
-<div class="container mt-4">
-  <div class="grid">
-      <% @ads.each do |ad| %>
-      <div class="card">
-      <div class="item">
-         <a> <%= link_to ad, class:"text-decoration-none" do %> </a>
 
-             <%= cl_image_tag ad.photo.key, height: 300, width: 400, crop: :fill %>
-             <div class="item__overlay">
-              <div class="title-container">
-                <h3 id="title" aria-hidden="true"><%= ad.title %></h3>
-                <div class="stars">
-                  <%= render "shared/rate", average: @average %>
-                </div>
-              </div>
-              <div class="item__body">
-                  <div class="user_info">
-                    <% if ad.user.photo.attached? %>
-                      <%= cl_image_tag ad.user.photo.key, height: 300, width: 400, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <% else %>
-                      <%= image_tag "https://eu.ui-avatars.com/api/?name=#{ad.user.first_name}+#{ad.user.last_name}", height: 300, width: 400, crop: :fill, class: "card_user_pic" %>
-                    <% end %>
-                  <div><span class="card__user"><%= ad.user.first_name %></span></div>
-                  </div>
-                <ul>
-                  <li>Description : <%= ad.description %></li>
-                  <li>Numbre de prises: <%= ad.number_of_plug %></li>
-                  <li>Couleur : <%= ad.color %></li>
-                  <li>Longueur de cable (cm) : <%= ad.cable_length %></li>
-                  <li>Localisation : <%= ad.location %></li>
-                  <li>Usb : <%= ad.usb ? "Oui" : "Non" %></li>
-                </ul>
-              </div>
-            </div>
-          <% end %>
-      </div>
-      <% if current_user == ad.user%>
-              <div class= bouton>
-                    <div>
-                    <a <%= link_to 'Modifier', edit_ad_path(ad), class:"text-decoration-none"%>
-                      <span class="line -right"></span>
-                      <span class="line -top"></span>
-                      <span class="line -left"></span>
-                      <span class="line -bottom"></span>
-                    </a>
-                    </div>
-                    <div>
-                    <a <%= link_to 'Supprimer', ad, class:"text-decoration-none", method: :delete, data: { confirm: 'Are you sure?' } %>
-                      <span class="line -right"></span>
-                      <span class="line -top"></span>
-                      <span class="line -left"></span>
-                      <span class="line -bottom"></span>
-                    </a>
-                    </div>
-              </div>
-              <% end%>
-      </div>
+
+
+
+<div class="container mt-4">
+<h3 class="text-ads">Mes annonces de multiplug : </h3>
+  <div class ="grid">
+   <% @my_ads.each do |ad| %>
+      <%= render "card", ad: ad %>
+      <% end %>
+  </div>
+<h3 class="text-ads">Découvrez les multiplug des autres utilisateurs ! </h3>
+  <div class ="grid">
+  <% @other_ads.each do |ad| %>
+      <%= render "card", ad: ad %>
       <% end %>
   </div>
 </div>
