@@ -6,8 +6,8 @@ class AdsController < ApplicationController
   # GET /ads
   def index
     @ads = Ad.all
-    @my_ads = Ad.where(user_id: current_user.id)
-    @other_ads = Ad.where.not(user_id: current_user.id)
+    @my_ads = Ad.where(user_id: current_user)
+    @other_ads = Ad.where.not(user_id: current_user)
     @sum = []
     @ads.each do |ad|
       @ratings = Rating.where(ad_id: ad.id)
@@ -50,10 +50,10 @@ class AdsController < ApplicationController
   def show
     @rating = Rating.new
     @rating.ad_id = params[:id]
-
+    @user = current_user
     @sum = []
     @ratings = Rating.where(ad_id: @ad.id)
-    @rentals = Rental.where(ad_id: @ad.id, user_id: current_user.id)
+    @rentals = Rental.where(ad_id: @ad.id, user_id: current_user)
     if @rentals != nil
       @ad_rental = @rentals.last
     end
