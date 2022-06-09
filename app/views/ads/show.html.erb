@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-product">
-    <img src="https://www.keria.com/media/catalog/product/cache/a46bb62c77b4b6fde7d40b04bb4cd366/1/9-43165-1904366/multiprise-multimedia-usb-2x16a-1x6a-jaune-wattaco-1904366.jpg" />
+    <%= cl_image_tag @ad.photo.key, height: 300, width: 400, crop: :fill %>
     <div class="card-product-infos"  style="width: 1000px; margin: 0 auto;">
       <h3><%= @ad.title %></h3>
       <div class="stars">
@@ -8,7 +8,11 @@
       </div>
       <p></p>
       <div class="user_info">
-          <img id="pic"src="https://i.imgur.com/7D7I6dI.png" alt="" />
+        <% if @ad.user.photo.attached? %>
+          <%= cl_image_tag @ad.user.photo.key, height: 300, width: 400, crop: :fill, id: "pic" %>
+        <% else %>
+          <%= image_tag "https://eu.ui-avatars.com/api/?name=#{@ad.user.first_name}+#{@ad.user.last_name}", height: 300, width: 400, crop: :fill, id: "pic" %>
+        <% end %>
           <div><span class="card__user">Annonce postée par</span>
           <strong> <%= @ad.user.first_name  %> </strong></div>
         </div>
@@ -23,6 +27,7 @@
         </div>
     </div>
   </div>
+  <% if current_user != @ad.user%>
   <br>
   <div class="calendar" >
     <div class="form-wrapper" style="width: 1000px; margin: 0 auto;">
@@ -32,6 +37,7 @@
             <%= f.input :end_date, label: 'Fin de la location', as: :string, required: false, input_html: {id: "range_end"} %>
             <%= f.button :submit, "Go", class: "btn btn-primary" %>
           <% end %>
+  <% end %>
     <br>
     <% if current_user == @ad.user %>
     <%= link_to 'Edit', edit_ad_path(@ad), class: "btn btn-primary"%>
