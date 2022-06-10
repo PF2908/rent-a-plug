@@ -32,7 +32,7 @@
       </div>
       <div class="certifs">
         <i class="fa-solid fa-check"></i>
-        <p>Addresse e-mail</p>
+        <p>Adresse e-mail</p>
       </div>
       <div class="certifs">
         <i class="fa-solid fa-check"></i>
@@ -56,14 +56,14 @@
     <% end %>
     <%= f.input :photo, as: :file %>
     <%= f.input :password,
-                hint: "Laisser blanc si vous ne changer pas",
+                hint: "Laissez blanc si vous ne changez pas",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "rentrer votre mot de passe pour confirmer",
+                hint: "rentrez votre mot de passe pour confirmer",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
     <div class="button-update">
