@@ -12,14 +12,18 @@
 }
 
 .input-group {
-  width: 30%;
+width: 20%;
 }
 
+.input-group .rounded-pill{
+  align-items: center;
+}
 .btn-outline-primary {
   color: #35a857;
   border-color: #35a857;
 }
-
+.button-bar-de-recherche {
+}
 .btn-outline-primary:hover {
 color: #fff;
 background-color: #35a857;

@@ -1,24 +1,26 @@
 <div class="card">
       <div class="item">
          <a> <%= link_to ad, class:"text-decoration-none" do %> </a>
-
-             <%= cl_image_tag ad.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class= "product-image">
+              <%= cl_image_tag ad.photo.key, height: 300, width: 400, crop: :fill %>
+             </div>
              <div class="item__overlay">
               <div class="title-container">
                 <h3 id="title" aria-hidden="true"><%= ad.title %></h3>
                 <div class="stars">
-                  <%= render "shared/rate", average: @average %>
+                  <%= render "shared/rate", ad: ad %>
                 </div>
               </div>
               <div class="item__body">
                   <div class="user_info">
                     <% if ad.user.photo.attached? %>
-                      <%= cl_image_tag ad.user.photo.key, height: 300, width: 300, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <div class="pic_card_current_user"><%= cl_image_tag ad.user.photo.key, height: 300, width: 300, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %></div>
                     <% else %>
                       <%= image_tag "https://eu.ui-avatars.com/api/?name=#{ad.user.first_name}+#{ad.user.last_name}", height: 300, width: 300, crop: :fill, class: "card_user_pic" %>
                     <% end %>
                   <div><span class="card__user"><%= ad.user.first_name %></span></div>
                   </div>
+                <div class="description_product">
                 <ul>
                   <li>Description : <%= ad.description %></li>
                   <li>Numbre de prises: <%= ad.number_of_plug %></li>
@@ -27,6 +29,7 @@
                   <li>Localisation : <%= ad.location %></li>
                   <li>Usb : <%= ad.usb ? "Oui" : "Non" %></li>
                 </ul>
+                </div>
               </div>
             </div>
           <% end %>

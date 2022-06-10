@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
+  <div class="container-fluid d-flex">
     <%= link_to ads_path, class: "navbar-brand" do %>
       <%= image_tag "https://www.plugpower.com/wp-content/uploads/2022/04/Plug_tm_rgb.png" %>
     <% end %>
@@ -7,14 +7,17 @@
     <div class="input-group rounded-pill">
       <%# <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /> %>
       <%# <button type="button" class="btn btn-outline-primary">Rechercher</button> %>
-
-      <%= form_tag ads_path, method: :get do %>
+      <div class="input-bar-de-recherche">
+        <%= form_tag ads_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
           placeholder: "Trouver une prise"
         %>
+      </div>
+      <div class="button-bar-de-recherche">
         <%= submit_tag "Rechercher", class: "btn btn-outline-primary" %>
+      </div>
       <% end %>
     </div>
 

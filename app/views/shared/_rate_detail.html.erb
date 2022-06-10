@@ -7,7 +7,7 @@
     />
 </svg>-->
 <% array_rate = [] %>
-<% ad.ratings.each do |rating| %>
+<% @ad.ratings.each do |rating| %>
   <% array_rate << rating.rate %>
 <% end %>
 <% if array_rate.length != 0 %>
