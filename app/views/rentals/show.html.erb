@@ -7,6 +7,7 @@
       <br>
       <br>
         <h3><%=@ad.title %> - du <%= @rental.start_date %> au <%= @rental.end_date %></h3>
+        <h2>Prix total: <%= (((@rental.end_date - @rental.start_date).to_i + 1) * @ad.price).to_i %> €</h2>
       <br>
       <div class="rental-details">
         <div class="rental-left">
