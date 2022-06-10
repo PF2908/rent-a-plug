@@ -1,13 +1,15 @@
-<div class="container d-flex justify-content-center">
-  <div class="edit-form">
+<div class="container d-flex justify-content-around align-items-start">
+  <div class="">
       <h1>Editing ad</h1>
       <%= render 'form', ad: @ad %>
 
-    <div class="btn btn-primary">
+    <div class="gradient-button">
       <%= link_to 'Back', ads_path, class: "text-decoration-none" %>
     </div>
   </div>
 
-  <div class="img-plug">
-  </div>
+
+  <div class="mt-5"><%= cl_image_tag @ad.photo.key %></div>
+
+
 </div>
