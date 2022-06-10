@@ -5,18 +5,18 @@
 
   <div class="form-inputs">
     <div class="mb-3 string required ad_brand">
-      <label class="form-label string required" for="ad_title">Title <abbr title="required">*</abbr></label>
+      <label class="form-label string required" for="ad_title">Titre <abbr title="required">*</abbr></label>
       <%= f.input_field :title, class: 'form-control string required' %>
     </div>
 
-    <%= f.input :brand %>
-    <%= f.input :number_of_plug %>
-    <%= f.input :color %>
-    <%= f.input :cable_length %>
+    <%= f.input :brand, label: "Marque" %>
+    <%= f.input :number_of_plug, label: "Nombre de plug" %>
+    <%= f.input :color, label: "Couleur" %>
+    <%= f.input :cable_length, label: "Longueur de cable" %>
 
 
     <div class="mb-3 string required ad_brand" data-controller="geocoder" data-geocoder_api_key_value="pk.eyJ1IjoicGF1bGZvdXJuaWVyIiwiYSI6ImNsM216ZnpwNjAzc28za2xnM2tlZDI4YXQifQ.F4Xl8mMx-ZD0Ikn-5yHbOg" data-geocoder-target="location">
-    <label class="form-label string required" for="ad_brand">Location <abbr title="required">*</abbr></label>
+    <label class="form-label string required" for="ad_brand">Localisation <abbr title="required">*</abbr></label>
 
     <%= f.input_field :location, class: 'form-control string required',
                         "data-geocoder-target": "location",
@@ -27,12 +27,12 @@
     <div class="mb-3 string required ad_brand">
       <label class="form-label string required" for="ad_description">Description <abbr title="required">*</abbr></label>
       <%= f.input_field :description, class: 'form-control string required' %>
-    </div>    <%= f.input :price %>
+    </div>    <%= f.input :price, label: "Prix" %>
     <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-block" %>
+    <%= f.button :submit, class: "gradient-button-green" %>
   </div>
 <% end %>
 </div>
