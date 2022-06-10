@@ -6,6 +6,12 @@
 .review-star-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 3px;
+  gap: 100px;
+}
+
+.card-comment {
+  border: 1px solid #b4b4b4;
+  border-radius: 8px;
+
 }

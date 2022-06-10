@@ -1,12 +1,15 @@
+<br><br>
+<h2 class="mt-5"><%= @ratings.length %> Commentaires</h2>
+<br>
 <% ratings.each do |rating| %>
-  <div class="card m-3 p-3">
+  <div class="card-comment m-3 p-3">
     <div class="review-star-container">
       <p>Posté par <%= @user_rating.first_name%>, le <%= rating.created_at %></p>
       <div class="stars">
         <%= render "shared/rate", ad: @ad, class: "reviews-star"%>
       </div>
     </div>
-    <div class="">
+    <div class="comment">
       <p class=""><%= rating.comment %></p>
     </div>
   </div>
