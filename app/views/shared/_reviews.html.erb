@@ -3,7 +3,7 @@
     <div class="review-star-container">
       <p>Posté par <%= @user_rating.first_name%>, le <%= rating.created_at %></p>
       <div class="stars">
-        <%= render "shared/rate", average: rating.rate, class: "reviews-star"%>
+        <%= render "shared/rate", ad: @ad, class: "reviews-star"%>
       </div>
     </div>
     <div class="">
